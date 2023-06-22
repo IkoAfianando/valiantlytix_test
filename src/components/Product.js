@@ -65,10 +65,11 @@ const Product = () => {
                         <button className="bg-black text-white py-3 px-6 active:bg-gray-800"
                                 onClick={() => dispatch(addToCart({
                                     id: details.id,
-                                    name: details.title,
+                                    title: details.title,
                                     price: details.price,
                                     quantity: baseQuantity,
                                     description: details.description,
+                                    thumbnail: details.thumbnail
                                 })) & toast.success(`${details.title} added to cart`)}
                         >add to cart
                         </button>

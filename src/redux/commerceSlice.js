@@ -11,16 +11,35 @@ export const commerceSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             const item = state.productData.find((item) => item.id === action.payload.id);
-            if(item) {
+            if (item) {
                 item.quantity += action.payload.quantity;
-            }else {
+            } else {
                 state.productData.push(action.payload);
             }
         },
+        deleteItem: (state, action) => {
+            state.productData = state.productData.filter((item) => item.id !== action.payload.id);
+
+        },
+        resetCart: (state, action) => {
+            state.productData = [];
+        },
+        incrementQuantity: (state, action) => {
+            const item = state.productData.find((item) => item.id === action.payload.id);
+            if (item) {
+                item.quantity += 1;
+            }
+        },
+        decrementQuantity: (state, action) => {
+            const item = state.productData.find((item) => item.id === action.payload.id);
+            if (item) {
+                item.quantity -= 1;
+            }
+        }
     }
 })
 
 export const {
-    addToCart
+    addToCart, deleteItem, resetCart, incrementQuantity, decrementQuantity
 } = commerceSlice.actions;
 export default commerceSlice.reducer;

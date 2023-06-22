@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ProductsCard = ({product}) => {
     const dispatch = useDispatch();
+
     const navigate = useNavigate();
     const handleDetails = () => {
         navigate(`/product/${product.id}`, {
@@ -39,10 +40,11 @@ const ProductsCard = ({product}) => {
                     </div>
                     <p onClick={() => dispatch(addToCart({
                         id: product.id,
-                        name: product.title,
+                        title: product.title,
                         price: product.price,
                         quantity: 1,
                         description: product.description,
+                        thumbnail: product.thumbnail
                     })) & toast.success(`${product.title} added to cart`)}
                        className="absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex items-center
                     gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500">
