@@ -35,11 +35,17 @@ export const commerceSlice = createSlice({
             if (item) {
                 item.quantity -= 1;
             }
+        },
+        addUser: (state, action) => {
+            state.userInfo = action.payload;
+        },
+        removeUser: (state, action) => {
+            state.userInfo = null;
         }
     }
 })
 
 export const {
-    addToCart, deleteItem, resetCart, incrementQuantity, decrementQuantity
+    addToCart, deleteItem, resetCart, incrementQuantity, decrementQuantity, addUser, removeUser
 } = commerceSlice.actions;
 export default commerceSlice.reducer;

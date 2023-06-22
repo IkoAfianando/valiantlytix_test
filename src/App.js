@@ -11,6 +11,10 @@ import Cart from "./pages/Cart";
 import {productsData} from "./api/Api";
 import Product from "./components/Product";
 import Products from "./components/Products";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import NotFound from "./NotFound";
+
 
 const Layout = () => {
     return (
@@ -21,6 +25,7 @@ const Layout = () => {
         </div>
     )
 }
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -43,6 +48,18 @@ const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <Cart/>,
+            },
+            {
+                path: "/login",
+                element: <Login/>,
+            },
+            {
+                path: "/register",
+                element: <Register/>,
+            },
+            {
+                path: "*",
+                element: <NotFound/>,
             }
         ]
     }

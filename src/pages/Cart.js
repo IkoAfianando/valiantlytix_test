@@ -1,9 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector} from "react-redux";
 import CartItem from "../components/CartItem";
+import {resetCart} from "../redux/commerceSlice";
+import {useDispatch} from "react-redux";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = () => {
     const productData = useSelector((state) => state.commerce.productData);
+    const userInfo = useSelector((state) => state.commerce.userInfo);
+
     const [totalAmount, setTotalAmount] = useState(0);
     useEffect(() => {
         let price = 0;
@@ -13,6 +19,7 @@ const Cart = () => {
         })
         setTotalAmount(price);
     }, [productData]);
+    const dispatch = useDispatch();
     
 
     return (
@@ -43,9 +50,37 @@ const Cart = () => {
                     <p className="font-semibold flex justify-between mt-6">
                         Total <span className="text-xl font-bold">${totalAmount}</span>
                     </p>
-                    <button className="bg-black text-white py-3 px-6 mt-6 active:bg-gray-800 duration-300">proceed to checkout</button>
+                    {
+                        userInfo !== null && userInfo !== undefined ? (
+                            <button className="bg-black text-white py-3 px-6 mt-6 active:bg-gray-800 duration-300"
+                                    onClick={() => {
+                                        // eslint-disable-next-line no-unused-expressions
+                                        dispatch(resetCart())
+                                        & toast.success("Order Placed Successfully")
+                                    }}
+                            >proceed to checkout</button>
+                        ) : (
+                            <button className="bg-black text-white py-3 px-6 mt-6 active:bg-gray-800 duration-300" >
+                                <a href="/login">
+                                    Login to Checkout
+                                </a>
+                            </button>
+                        )
+                    }
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick={true}
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={true}
+                pauseOnHover={false}
+                theme="dark"
+            />
         </div>
     );
 };
