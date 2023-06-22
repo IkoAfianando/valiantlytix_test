@@ -3,9 +3,8 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 import {
     createBrowserRouter,
-    Outlet, Route,
+    Outlet,
     RouterProvider,
-    ScrollRestoration
 } from "react-router-dom"
 import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
