@@ -2,7 +2,7 @@ import React from 'react';
 import {cart, user} from '../assets/index'
 const Header = () => {
     return (
-        <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-800">
+        <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-800 sticky top-0 z-50">
             <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
                 <div>
                     <a href="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
